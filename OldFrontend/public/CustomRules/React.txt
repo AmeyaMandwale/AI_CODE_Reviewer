@@ -1,0 +1,120 @@
+1. Keep one React component per file.
+2. Use PascalCase for file names (e.g., UserProfile.jsx).
+3. Group related files into feature-based folders (e.g., src/features/users/).
+4. Keep reusable UI components under src/components/.
+5. Store assets (images, icons, fonts) under src/assets/.
+6. Maintain index.js or index.ts at the root for app bootstrap.
+7. Store API calls in a separate service layer (e.g., src/services/api.js).
+8. Keep environment variables in .env files.
+9. Use absolute imports via jsconfig.json or tsconfig.json for cleaner paths.
+10. Avoid deeply nested folder structures (maximum 4 levels deep).
+11. Use PascalCase for component names (UserCard, LoginForm).
+12. Use camelCase for variables, functions, and hooks (userData, handleSubmit).
+13. File names should match component names exactly.
+14. Use UPPER_CASE for constants (MAX_RETRY_COUNT).
+15. Boolean props should start with is, has, can, or should (isVisible, hasError).
+16. Custom hooks must start with “use” (e.g., useFetchData).
+17. CSS class names should use kebab-case (.user-card, .header-bar).
+18. Context and provider files should end with Context or Provider.
+19. Avoid abbreviations or unclear variable names.
+20. Keep function names descriptive and action-oriented (handleLogin, fetchUsers).
+21. Use functional components with hooks — avoid class components.
+22. Keep components small and focused (prefer <150 lines).
+23. Split large components into smaller reusable ones.
+24. Each component should handle a single responsibility.
+25. Always use prop validation with PropTypes or TypeScript interfaces.
+26. Keep component logic (data fetching, state) separated from UI presentation.
+27. Use container-presentational pattern where applicable.
+28. Avoid deep component nesting — flatten hierarchies when possible.
+29. Avoid business logic inside JSX.
+30. Ensure all components are pure and predictable (no side effects inside render).
+31. Use React hooks (useState, useEffect, useMemo, etc.) instead of lifecycle methods.
+32. Place hooks at the top level of the component — never inside loops or conditions.
+33. Use useEffect cleanup functions to prevent memory leaks.
+34. Combine multiple state variables using useReducer when they are related.
+35. Use useMemo for expensive computations.
+36. Use useCallback to memoize functions passed as props.
+37. Prefer React Context or libraries like Zustand/Recoil/Redux Toolkit for global state.
+38. Avoid prop drilling — use context or composition.
+39. Avoid unnecessary re-renders with memoization (React.memo).
+40. Reset component state properly on unmount or dependency changes.
+41. Keep props minimal — pass only required data.
+42. Use destructuring for props (const { name, age } = props).
+43. Define default props when applicable.
+44. Avoid passing complex objects — use normalized structures.
+45. Never mutate props inside a component.
+46. Document expected props using PropTypes or JSDoc.
+47. Avoid deeply nested prop structures.
+48. Use context instead of chaining props multiple levels deep.
+49. Validate incoming prop data for safety.
+50. Keep prop names clear and self-explanatory.
+51. Wrap JSX elements in parentheses for clarity.
+52. Return only one root element per component (use fragments <>...</> if needed).
+53. Use self-closing tags where applicable (<Input /> instead of <Input></Input>).
+54. Keep JSX clean — avoid inline logic or long expressions.
+55. Use array keys properly — never use index as key in dynamic lists.
+56. Avoid inline styles — prefer CSS or styled-components.
+57. Use conditional rendering with logical operators or ternaries.
+58. Avoid nested ternary operators — use helper functions instead.
+59. Use semantic HTML tags (<header>, <main>, <footer>).
+60. Ensure accessibility (aria-* attributes) for interactive elements.
+61. Use CSS Modules, Styled Components, or Tailwind CSS for styling.
+62. Follow BEM or utility-first conventions consistently.
+63. Keep styles component-scoped — avoid global leaks.
+64. Use theme variables for colors, fonts, and spacing.
+65. Avoid inline CSS except for dynamic runtime values.
+66. Maintain consistent spacing, typography, and color scheme.
+67. Prefer responsive layouts using Flexbox or CSS Grid.
+68. Use CSS variables (--primary-color) for theming.
+69. Keep class names semantic and descriptive.
+70. Avoid complex CSS selectors — keep specificity low.
+71. Lazy load components using React.lazy() and Suspense.
+72. Use code-splitting to optimize bundle size.
+73. Memoize heavy components with React.memo().
+74. Use useMemo and useCallback to prevent unnecessary re-renders.
+75. Debounce or throttle frequent events (scroll, input, resize).
+76. Avoid unnecessary state updates.
+77. Keep dependency arrays in hooks accurate.
+78. Use React.Suspense with fallback for async components.
+79. Use pagination or infinite scroll for large lists.
+80. Preload critical resources for better UX.
+81. Use controlled components for form inputs.
+82. Use useForm (React Hook Form or Formik) for complex forms.
+83. Validate input fields before submission.
+84. Prevent form default behavior using event.preventDefault().
+85. Always manage form state locally.
+86. Display meaningful error messages for invalid input.
+87. Sanitize user inputs before storing or sending to API.
+88. Use placeholders and labels properly for accessibility.
+89. Handle empty or undefined form states gracefully.
+90. Reset form state after successful submission.
+91. Keep API calls in a dedicated service layer (api.js).
+92. Use fetch or axios with async/await syntax.
+93. Handle API errors gracefully with try/catch.
+94. Use loading and error states (isLoading, isError).
+95. Cancel pending API requests on component unmount.
+96. Use React Query or SWR for data caching and revalidation.
+97. Never hardcode API URLs — use environment variables.
+98. Sanitize all API responses before rendering.
+99. Handle network failures with retry or fallback UI.
+100. Avoid blocking UI while fetching — use skeleton loaders.
+101. Never inject untrusted HTML using dangerouslySetInnerHTML.
+102. Sanitize all user-generated content before rendering.
+103. Avoid storing sensitive data in localStorage or sessionStorage.
+104. Use HTTP-only cookies for tokens whenever possible.
+105. Always validate data coming from APIs.
+106. Avoid exposing API keys in client-side code.
+107. Escape special characters in JSX where needed.
+108. Implement role-based UI access (e.g., hide admin controls).
+109. Keep dependencies updated to avoid vulnerabilities.
+110. Use HTTPS for all API calls and assets.
+111. Use Jest and React Testing Library for unit and integration tests.
+112. Write tests for critical business logic and UI states.
+113. Mock API calls in tests using MSW or Axios mocks.
+114. Maintain at least 80% test coverage.
+115. Use ESLint with Airbnb or React plugin for linting.
+116. Use Prettier for consistent formatting.
+117. Run lint checks in CI/CD before merging.
+118. Remove unused imports, variables, and console logs.
+119. Keep consistent code formatting (2 or 4 spaces indentation).
+120. Document components and hooks with JSDoc or TypeDoc.

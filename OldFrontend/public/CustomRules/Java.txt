@@ -1,0 +1,120 @@
+1. Each public class must be declared in its own file.
+2. The file name must match the public class name exactly (case-sensitive).
+3. Keep package names lowercase without underscores.
+4. Maintain class member order: constants, variables, constructors, public methods, protected methods, private methods.
+5. Mark classes as `final` if they are not intended for inheritance.
+6. Avoid using static variables unless they are declared as `static final`.
+7. Use inner classes only when they are tightly coupled with the enclosing class.
+8. Keep imports organized and remove unused imports.
+9. Always include a package declaration at the top of the file.
+10. Use access modifiers (public, private, protected) explicitly for all classes and members.
+11. Use PascalCase for class and interface names (e.g., EmployeeDetails).
+12. Use camelCase for method and variable names (e.g., calculateSalary).
+13. Use UPPER_CASE_WITH_UNDERSCORES for constants (e.g., MAX_RETRY_COUNT).
+14. Use lowercase for package names (e.g., com.company.module).
+15. Boolean variable names should start with is, has, should, or can (e.g., isValid).
+16. Use plural names for collections (e.g., userList).
+17. Avoid single-letter variable names except for loop counters.
+18. Interface names must not start with “I” (use PaymentService, not IPaymentService).
+19. Method names should be verbs or verb phrases (e.g., fetchUserData).
+20. Constants should be declared as private static final.
+21. Always initialize variables before use.
+22. Use var (Java 10+) only when the type is obvious.
+23. Prefer primitive types over wrapper classes unless nullability is required.
+24. Avoid using Object type unless absolutely necessary.
+25. Use enum for fixed sets of constants instead of integer constants.
+26. Use StringBuilder for string concatenation in loops.
+27. Use .equals() instead of == for string comparison.
+28. Define constants at the top of the class.
+29. Prefer immutable objects where possible.
+30. Avoid shadowing class variables inside methods.
+31. Each method must perform a single logical task.
+32. Add Javadoc comments for all public methods and classes.
+33. Keep method names descriptive and action-oriented.
+34. Limit method length to a maximum of 40 lines.
+35. Limit method parameters to 3 or 4; use a wrapper object for more.
+36. Avoid returning null; use Optional<T> when appropriate.
+37. Validate input parameters using Objects.requireNonNull() or explicit checks.
+38. Use method overloading carefully and meaningfully.
+39. Avoid deep nesting of conditional statements.
+40. Use helper methods for repeated logic.
+41. Never use catch (Exception e) unless absolutely necessary.
+42. Always log exceptions with proper context.
+43. Create custom exceptions for specific error cases.
+44. Use checked exceptions for recoverable errors.
+45. Use runtime exceptions for programming logic errors.
+46. Always use try-with-resources for resource management.
+47. Do not swallow exceptions silently.
+48. Provide meaningful messages when throwing exceptions.
+49. Wrap third-party exceptions in custom domain exceptions.
+50. Do not expose internal stack traces or messages to end users.
+51. Always use interface types (List, Map, Set) for declarations.
+52. Use Streams API for filtering and transforming data.
+53. Avoid modifying collections during iteration.
+54. Use Collectors.toUnmodifiableList() for immutable results.
+55. Specify generic types (e.g., List<String>).
+56. Use putIfAbsent(), merge(), and computeIfAbsent() for map operations.
+57. Avoid raw types in collections.
+58. Prefer enhanced for-loops over traditional loops when possible.
+59. Avoid unnecessary boxing/unboxing in streams.
+60. Use parallel streams only for CPU-intensive tasks.
+61. Make all fields private to enforce encapsulation.
+62. Use getters and setters for accessing fields.
+63. Avoid public mutable fields.
+64. Prefer composition over inheritance.
+65. Mark non-overridable methods as final.
+66. Override both equals() and hashCode() together.
+67. Override toString() for debugging clarity.
+68. Use builder patterns for complex object creation.
+69. Apply abstraction and interfaces to reduce coupling.
+70. Follow SOLID principles in all designs.
+71. Avoid sharing mutable state between threads.
+72. Use ExecutorService or ForkJoinPool instead of manual threads.
+73. Use concurrent collections (ConcurrentHashMap, CopyOnWriteArrayList).
+74. Use synchronized blocks or ReentrantLock for shared resource protection.
+75. Use volatile only for visibility guarantees, not atomicity.
+76. Avoid Thread.sleep() for synchronization logic.
+77. Always shut down executors properly.
+78. Use CompletableFuture for async programming.
+79. Avoid deadlocks by acquiring locks in a consistent order.
+80. Minimize synchronized blocks for better performance.
+81. Always close resources using try-with-resources.
+82. Prefer java.nio.file (Path, Files) over the legacy File API.
+83. Define a serialVersionUID when implementing Serializable.
+84. Do not serialize sensitive information.
+85. Validate file paths and input data before processing.
+86. Avoid reading large files fully into memory.
+87. Use buffered streams for performance.
+88. Handle I/O exceptions gracefully.
+89. Prefer JSON/YAML over native serialization.
+90. Use appropriate character encoding (UTF-8) consistently.
+91. Avoid unnecessary object creation.
+92. Use StringBuilder instead of + for string concatenation in loops.
+93. Reuse expensive objects like database connections or regex patterns.
+94. Use caching for frequently accessed data.
+95. Monitor memory usage in long-running applications.
+96. Use lazy initialization when possible.
+97. Avoid premature optimization — measure before tuning.
+98. Clear unused references to help garbage collection.
+99. Avoid memory leaks from listeners or static references.
+100. Use object pools carefully to prevent resource exhaustion.
+101. Use SLF4J with Logback or Log4j2 for logging.
+102. Never use System.out.println() or printStackTrace() in production.
+103. Log meaningful information with proper log levels.
+104. Use parameterized logging instead of string concatenation.
+105. Include context (user ID, request ID) in log messages.
+106. Avoid logging sensitive data such as passwords or tokens.
+107. Use DEBUG for development and INFO or higher for production.
+108. Rotate logs and manage retention policies.
+109. Use structured logging for machine-readable logs.
+110. Include timestamps and thread names in log patterns.
+111. Use @Override on all overridden methods.
+112. Use @FunctionalInterface for interfaces with one abstract method.
+113. Use Lombok annotations only for reducing boilerplate (@Getter, @Builder).
+114. Do not mix Lombok and manual getter/setter methods in the same class.
+115. Always document Lombok behavior in class-level Javadoc.
+116. Avoid overusing Lombok in domain or API models.
+117. Use annotations like @NotNull, @Nullable for clarity.
+118. Avoid reflection-based annotation processing where possible.
+119. Use @SuppressWarnings only with a comment explaining why.
+120. Keep annotation usage consistent across the codebase.

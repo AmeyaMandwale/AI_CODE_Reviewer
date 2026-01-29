@@ -1,0 +1,80 @@
+# ============================
+# Node / Vite / React Project
+# ============================
+# .NET build output
+bin/
+obj/
+
+# Dependency directories
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Build output
+dist/
+build/
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Lint cache
+.eslintcache
+
+# Optional cache directories
+.cache/
+vite.config.ts.timestamp*
+vite.config.js.timestamp*
+.vscode-test/
+
+
+# Optional diagnostic files
+*.log.*
+npm-debug.log*
+
+# Tailwind JIT / postcss cache
+.postcssrc
+.tailwindcss/
+*.css.map
+
+# Storybook (if ever used with Radix UI)
+storybook-static/
+.out/
+
+# ============================
+# Custom project notes or local assets
+# ============================
+# You can track only safe examples here
+notes/
+drafts/

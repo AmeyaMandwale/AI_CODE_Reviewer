@@ -1,0 +1,108 @@
+rules:
+  # 1 — Hardcoded Credentials
+  - id: no-hardcoded-credentials
+    message: "Possible hardcoded credential"
+    languages: [java, csharp, javascript, python]
+    severity: ERROR
+    patterns:
+      - pattern-regex: "(password|secret|apikey|api_key|token)\\s*[=:]\\s*['\\\"]?\\w+['\\\"]?"
+
+  # 2 — Insecure Random (Java)
+  - id: insecure-random
+    message: "Use SecureRandom for cryptographic operations"
+    languages: [java]
+    severity: WARNING
+    pattern: java.util.Random()
+
+  # 3 — Weak Hash Algorithms (MD5/SHA1)
+  - id: weak-hash-algo
+    message: "Weak hash algorithm used (MD5/SHA1)"
+    languages: [java, csharp, python, javascript]
+    severity: ERROR
+    pattern-regex: "(MD5|SHA1|sha1|md5)"
+
+  # 4 — SQL Injection Risk (String concatenation)
+  - id: sql-injection
+    message: "Possible SQL Injection — avoid string concatenation in SQL queries"
+    languages: [java, csharp, python, javascript]
+    severity: ERROR
+    patterns:
+      - pattern-regex: "SELECT.*\\+"
+
+  # 5 — Disabling SSL Certificate Validation
+  - id: insecure-ssl-validation
+    message: "SSL certificate validation disabled"
+    languages: [csharp, java]
+    severity: ERROR
+    pattern-regex: "(DisableCertificateValidation|TrustAllCerts)"
+
+  # 6 — Insecure HTTP instead of HTTPS
+  - id: insecure-http
+    message: "Use HTTPS instead of HTTP"
+    languages: [javascript, python, java, csharp]
+    severity: WARNING
+    pattern-regex: "http://"
+
+  # 7 — Logging Sensitive Information
+  - id: sensitive-logging
+    message: "Sensitive data should not be logged"
+    languages: [java, csharp, python]
+    severity: WARNING
+    pattern-regex: "(password|secret|token).*log"
+
+  # 8 — Command Injection (exec, Runtime.exec)
+  - id: command-injection
+    message: "Possible command injection risk"
+    languages: [python, java, javascript]
+    severity: ERROR
+    pattern-regex: "(exec\\(|Runtime.getRuntime\\(\\).exec)"
+
+  # 9 — DISABLE CSRF Protection (Spring Security)
+  - id: csrf-disabled
+    message: "CSRF is disabled — high security risk"
+    languages: [java]
+    severity: ERROR
+    pattern: |
+      http.csrf().disable()
+
+  # 10 — Weak JWT Secret
+  - id: weak-jwt-secret
+    message: "Weak or hardcoded JWT secret"
+    languages: [javascript, python, java]
+    severity: ERROR
+    pattern-regex: "JWT_SECRET|jwtSecret|jwt-secret"
+
+  # 11 — Use Prepared Statements (Java/C#)
+  - id: missing-prepared-statement
+    message: "Use parameterized queries to avoid SQL Injection"
+    languages: [java, csharp]
+    severity: WARNING
+    pattern-regex: "Statement\\s+.*execute"
+
+  # 12 — Using eval() - Remote Code Execution
+  - id: no-eval
+    message: "Avoid eval(), can lead to RCE"
+    languages: [javascript, python]
+    severity: ERROR
+    pattern: eval(...)
+
+  # 13 — AllowAll CORS Dangerous
+  - id: insecure-cors
+    message: "CORS configured to allow all origins"
+    languages: [javascript, java, csharp]
+    severity: ERROR
+    pattern-regex: "\\*.*CORS|CORS.*\\*"
+
+  # 14 — Flask debug mode enabled (Python)
+  - id: flask-debug
+    message: "Flask debug=True exposes server internals"
+    languages: [python]
+    severity: WARNING
+    pattern: app.run(debug=True)
+
+  # 15 — Missing Input Validation (regex check)
+  - id: missing-input-validation
+    message: "User input should be validated or sanitized"
+    languages: [python, javascript, java, csharp]
+    severity: WARNING
+    pattern-regex: "request\\.|req\\.|input\\(|Console.ReadLine"

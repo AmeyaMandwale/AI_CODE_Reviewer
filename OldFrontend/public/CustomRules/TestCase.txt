@@ -1,0 +1,195 @@
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Calculator Tests")
+class CalculatorTest {
+
+    @Nested
+    @DisplayName("add() method tests")
+    class AddTests {
+
+        @Test
+        @DisplayName("should add two positive numbers correctly")
+        void testAddPositiveNumbers() {
+            assertEquals(5, Calculator.add(2, 3));
+            assertEquals(100, Calculator.add(50, 50));
+            assertEquals(1000, Calculator.add(999, 1));
+        }
+
+        @Test
+        @DisplayName("should add two negative numbers correctly")
+        void testAddNegativeNumbers() {
+            assertEquals(-5, Calculator.add(-2, -3));
+            assertEquals(-100, Calculator.add(-50, -50));
+        }
+
+        @Test
+        @DisplayName("should add mixed sign numbers")
+        void testAddMixedNumbers() {
+            assertEquals(1, Calculator.add(3, -2));
+            assertEquals(-1, Calculator.add(-3, 2));
+            assertEquals(0, Calculator.add(5, -5));
+        }
+
+        @Test
+        @DisplayName("should handle zero correctly")
+        void testAddWithZero() {
+            assertEquals(0, Calculator.add(0, 0));
+            assertEquals(5, Calculator.add(0, 5));
+            assertEquals(5, Calculator.add(5, 0));
+        }
+
+        @Test
+        @DisplayName("should handle Integer.MAX_VALUE boundary")
+        void testAddMaxValue() {
+            assertEquals(Integer.MAX_VALUE, Calculator.add(Integer.MAX_VALUE - 1, 1));
+            assertEquals(Integer.MAX_VALUE, Calculator.add(Integer.MAX_VALUE, 0));
+        }
+
+        @Test
+        @DisplayName("should handle Integer.MIN_VALUE boundary")
+        void testAddMinValue() {
+            assertEquals(Integer.MIN_VALUE, Calculator.add(Integer.MIN_VALUE + 1, -1));
+            assertEquals(Integer.MIN_VALUE, Calculator.add(Integer.MIN_VALUE, 0));
+        }
+
+        @Test
+        @DisplayName("should handle overflow")
+        void testAddOverflow() {
+            int result = Calculator.add(Integer.MAX_VALUE, 1);
+            assertEquals(Integer.MIN_VALUE, result);
+        }
+
+        @ParameterizedTest
+        @CsvSource({
+            "1, 1, 2",
+            "10, 20, 30",
+            "100, 200, 300",
+            "-1, -1, -2",
+            "-10, -20, -30",
+            "5, -5, 0",
+            "0, 0, 0"
+        })
+        @DisplayName("should add various combinations")
+        void testAddParameterized(int a, int b, int expected) {
+            assertEquals(expected, Calculator.add(a, b));
+        }
+
+        @Test
+        @DisplayName("should be commutative")
+        void testAddCommutativity() {
+            assertEquals(Calculator.add(5, 3), Calculator.add(3, 5));
+            assertEquals(Calculator.add(-5, 10), Calculator.add(10, -5));
+        }
+
+        @Test
+        @DisplayName("should be associative")
+        void testAddAssociativity() {
+            int a = 5, b = 10, c = 15;
+            assertEquals(Calculator.add(Calculator.add(a, b), c), 
+                        Calculator.add(a, Calculator.add(b, c)));
+        }
+    }
+
+    @Nested
+    @DisplayName("max() method tests")
+    class MaxTests {
+
+        @Test
+        @DisplayName("should return larger of two positive numbers")
+        void testMaxPositiveNumbers() {
+            assertEquals(5, Calculator.max(3, 5));
+            assertEquals(5, Calculator.max(5, 3));
+            assertEquals(100, Calculator.max(50, 100));
+        }
+
+        @Test
+        @DisplayName("should return larger of two negative numbers")
+        void testMaxNegativeNumbers() {
+            assertEquals(-3, Calculator.max(-5, -3));
+            assertEquals(-3, Calculator.max(-3, -5));
+        }
+
+        @Test
+        @DisplayName("should handle mixed sign numbers")
+        void testMaxMixedNumbers() {
+            assertEquals(5, Calculator.max(-3, 5));
+            assertEquals(5, Calculator.max(5, -3));
+            assertEquals(0, Calculator.max(-5, 0));
+        }
+
+        @Test
+        @DisplayName("should return same number when both equal")
+        void testMaxEqualNumbers() {
+            assertEquals(5, Calculator.max(5, 5));
+            assertEquals(0, Calculator.max(0, 0));
+            assertEquals(-10, Calculator.max(-10, -10));
+        }
+
+        @Test
+        @DisplayName("should handle Integer.MAX_VALUE")
+        void testMaxWithMaxValue() {
+            assertEquals(Integer.MAX_VALUE, Calculator.max(Integer.MAX_VALUE, 0));
+            assertEquals(Integer.MAX_VALUE, Calculator.max(0, Integer.MAX_VALUE));
+            assertEquals(Integer.MAX_VALUE, Calculator.max(Integer.MAX_VALUE, Integer.MIN_VALUE));
+        }
+
+        @Test
+        @DisplayName("should handle Integer.MIN_VALUE")
+        void testMaxWithMinValue() {
+            assertEquals(0, Calculator.max(Integer.MIN_VALUE, 0));
+            assertEquals(Integer.MIN_VALUE, Calculator.max(Integer.MIN_VALUE, Integer.MIN_VALUE));
+        }
+
+        @ParameterizedTest
+        @CsvSource({
+            "1, 2, 2",
+            "2, 1, 2",
+            "10, 20, 20",
+            "-1, -2, -1",
+            "-10, 10, 10",
+            "0, 5, 5",
+            "5, 0, 5"
+        })
+        @DisplayName("should return correct max")
+        void testMaxParameterized(int a, int b, int expected) {
+            assertEquals(expected, Calculator.max(a, b));
+        }
+
+        @Test
+        @DisplayName("should be commutative")
+        void testMaxCommutativity() {
+            assertEquals(Calculator.max(5, 3), Calculator.max(3, 5));
+        }
+
+        @Test
+        @DisplayName("should be idempotent")
+        void testMaxIdempotency() {
+            assertEquals(42, Calculator.max(42, 42));
+        }
+    }
+
+    @Nested
+    @DisplayName("Integration tests")
+    class IntegrationTests {
+
+        @Test
+        @DisplayName("should combine add and max operations")
+        void testCombinedOperations() {
+            int sum = Calculator.add(5, 10);
+            int max = Calculator.max(sum, 20);
+            assertEquals(20, max);
+        }
+
+        @Test
+        @DisplayName("should handle chained operations")
+        void testChainedOperations() {
+            int result = Calculator.max(Calculator.add(5, 10), Calculator.add(8, 7));
+            assertEquals(15, result);
+        }
+    }
+}

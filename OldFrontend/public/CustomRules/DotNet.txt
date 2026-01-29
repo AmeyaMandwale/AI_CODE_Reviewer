@@ -1,0 +1,120 @@
+1. Use solution folders to organize projects by layer or module (e.g., API, Application, Domain, Infrastructure, Tests).
+2. Each project should have a clear purpose and follow Clean Architecture principles.
+3. Keep configuration files (appsettings.json, launchSettings.json) environment-specific.
+4. Store constants, enums, and DTOs in a dedicated folder or namespace.
+5. Separate domain models, DTOs, and view models — do not mix them.
+6. Keep reusable utility classes in a Common or Utilities namespace.
+7. Follow Dependency Injection (DI) via the built-in .NET Core service container.
+8. Use Async suffix for all asynchronous methods.
+9. Maintain separate projects for unit and integration tests.
+10. Avoid circular dependencies between projects.
+11. Use PascalCase for class, interface, and method names (CustomerService, GetUserById).
+12. Use camelCase for local variables and method parameters (userName, orderCount).
+13. Use _camelCase for private fields, prefixed with an underscore (_logger, _repository).
+14. Interfaces must start with a capital “I” (IUserService, IRepository).
+15. Use singular nouns for class names and plural nouns for collections.
+16. Enum names should be singular (Status.Active, not Statuses.Active).
+17. Avoid abbreviations and acronyms unless widely recognized (ID, URL, HTTP).
+18. Use meaningful and self-explanatory names (avoid DoWork, Temp, Data1).
+19. Use proper casing for acronyms (e.g., GetHttpRequest, not GetHTTPRequest).
+20. Boolean variable names should start with is, has, can, or should (e.g., isValid, hasAccess).
+21. Each class should follow the Single Responsibility Principle.
+22. Keep methods short — ideally under 30 lines of code.
+23. Limit parameters to a maximum of 5 — use objects or records if more are needed.
+24. Use expression-bodied members for short, single-line methods.
+25. Prefer composition over inheritance.
+26. Mark methods as private or internal when not meant for public use.
+27. Use sealed for classes that should not be inherited.
+28. Avoid static classes for logic — prefer dependency-injected services.
+29. Use readonly for immutable fields.
+30. Include XML comments (///) before each public class or method describing its purpose.
+31. Every service should have an interface abstraction (IEmailService → EmailService).
+32. Use constructor injection for dependencies — not property or method injection.
+33. Avoid circular service dependencies.
+34. Register dependencies in Program.cs or a dedicated DependencyInjection class.
+35. Use AddScoped, AddSingleton, and AddTransient appropriately.
+36. Avoid using ServiceLocator or static new calls for dependencies.
+37. Do not over-inject — if a class has too many dependencies, refactor it.
+38. Prefer interfaces for testability.
+39. Avoid tight coupling between layers.
+40. Keep DI registration clear and organized by functionality.
+41. Always use structured exception handling (try-catch-finally).
+42. Never catch System.Exception unless absolutely required.
+43. Create custom exceptions for domain-specific errors.
+44. Log errors with context — include correlation IDs or user IDs where applicable.
+45. Do not suppress or ignore exceptions silently.
+46. Re-throw exceptions using throw; to preserve stack trace.
+47. Validate all inputs — throw ArgumentNullException or ArgumentException when necessary.
+48. Use middleware for global exception handling in Web APIs.
+49. Return meaningful error messages and HTTP status codes.
+50. Never expose stack traces or internal details to API consumers.
+51. Use async and await for all I/O-bound operations.
+52. Suffix asynchronous methods with Async (e.g., GetUserAsync).
+53. Never block async calls with .Result or .Wait().
+54. Avoid mixing synchronous and asynchronous code.
+55. Use ConfigureAwait(false) in library projects.
+56. Use Task.WhenAll or Parallel.ForEachAsync for concurrent async tasks.
+57. Dispose of HttpClient properly or use IHttpClientFactory.
+58. Use cancellation tokens in async methods for cooperative cancellation.
+59. Handle exceptions in async tasks using try-catch.
+60. Avoid fire-and-forget async calls unless handled carefully with background services.
+61. Use Entity Framework Core or Dapper — don’t mix ORMs.
+62. Keep DbContext scoped per request.
+63. Use AsNoTracking() for read-only queries to improve performance.
+64. Use async database methods (ToListAsync, FindAsync, etc.).
+65. Use migrations to manage schema changes.
+66. Avoid raw SQL unless absolutely required — use parameterized queries.
+67. Always validate and sanitize user input to prevent SQL injection.
+68. Avoid lazy loading for large datasets — use explicit loading.
+69. Use DTOs to transfer data between layers.
+70. Handle concurrency with row versioning where applicable.
+71. Use ILogger<T> for structured logging.
+72. Avoid Console.WriteLine() in production code.
+73. Log at appropriate levels (Information, Warning, Error, Critical).
+74. Include contextual data (request ID, user, etc.) in logs.
+75. Log exceptions with stack traces for debugging.
+76. Avoid logging sensitive data (passwords, tokens, PII).
+77. Store logs centrally (e.g., Seq, Application Insights, ELK).
+78. Use Serilog or NLog for advanced logging scenarios.
+79. Include audit trails for critical operations.
+80. Periodically review logs for performance and security anomalies.
+81. Use RESTful principles — clear HTTP verbs and resource-based endpoints.
+82. Keep controllers thin — business logic should reside in services.
+83. Validate incoming requests using FluentValidation or Data Annotations.
+84. Return appropriate HTTP status codes (200, 400, 404, 500).
+85. Use versioning for public APIs (api/v1/users).
+86. Use Swagger/OpenAPI for documentation.
+87. Secure endpoints with authentication and authorization.
+88. Use model binding and avoid manual parsing of request bodies.
+89. Do not return entire entities — use DTOs or view models.
+90. Implement rate limiting for public APIs.
+91. Use HTTPS for all services and APIs.
+92. Store secrets and connection strings securely in Azure Key Vault or environment variables.
+93. Always validate and sanitize user input.
+94. Use parameterized SQL to prevent injection attacks.
+95. Implement authentication and authorization properly using ASP.NET Identity or JWT.
+96. Avoid storing passwords in plain text.
+97. Hash and salt passwords before storing them.
+98. Keep packages updated to avoid known vulnerabilities.
+99. Use Anti-forgery tokens in forms ([ValidateAntiForgeryToken]).
+100. Regularly run security scans and code analysis tools.
+101. Write unit tests for all business logic and critical components.
+102. Use xUnit or NUnit for unit testing.
+103. Mock dependencies using Moq or NSubstitute.
+104. Aim for minimum 80% code coverage.
+105. Test async methods properly using await.
+106. Write integration tests for API endpoints.
+107. Use test data builders or fixtures to avoid repetition.
+108. Include CI/CD pipeline checks for build, test, and lint.
+109. Run static code analysis (e.g., SonarQube, Roslyn analyzers).
+110. Apply code review for every pull request.
+111. Follow SOLID principles consistently.
+112. DRY — Don’t Repeat Yourself.
+113. KISS — Keep It Simple, Stupid.
+114. YAGNI — You Aren’t Gonna Need It.
+115. Avoid magic strings and numbers — use constants.
+116. Use null-coalescing operators and pattern matching effectively.
+117. Keep methods and classes cohesive.
+118. Remove dead code and unused imports.
+119. Always use proper indentation and consistent formatting.
+120. Document your public APIs, classes, and methods with XML comments.

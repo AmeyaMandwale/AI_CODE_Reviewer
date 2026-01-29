@@ -1,0 +1,65 @@
+1.Validate and sanitize all user inputs to prevent injection attacks.
+2.Encode and escape all outputs to prevent Cross-Site Scripting (XSS).
+3.Ensure all APIs and routes require proper authentication.
+4.Implement role-based access control (RBAC) for authorization.
+
+5.Never store passwords or sensitive tokens in plain text.
+
+6.Use secure hashing algorithms like bcrypt or Argon2 with salt for passwords.
+
+7.Do not log passwords, authentication tokens, or personal user data.
+
+8.Do not hardcode credentials, API keys, or tokens in the source code.
+
+9.Store secrets securely using environment variables or secret vaults.
+
+10.Encrypt all sensitive data at rest and in transit.
+
+11.Use secure communication protocols (HTTPS, TLS 1.2 or higher).
+
+12.Do not expose stack traces or internal system details in error responses.
+
+13.Sanitize log entries to remove sensitive data before logging.
+
+14.Avoid using deprecated, vulnerable, or unmaintained libraries.
+
+15.Keep all dependencies updated to patch known vulnerabilities.
+
+16.Use dependency scanning tools to detect security risks.
+
+17.Use secure session management with proper timeouts and renewal.
+
+18.Use secure and HttpOnly cookies for session tokens.
+
+19.Invalidate sessions immediately after logout or timeout.
+
+20.Prevent code injection by avoiding dynamic execution functions like eval() or exec().
+
+21.Use parameterized queries or prepared statements for all database operations.
+
+22.Enforce strict CORS (Cross-Origin Resource Sharing) policies.
+
+23.Implement CSRF (Cross-Site Request Forgery) protection for state-changing requests.
+
+24.Validate all uploaded files for type, size, and content before saving.
+
+25.Store uploaded files outside publicly accessible directories.
+
+26.Rename uploaded files to prevent overwriting or path traversal attacks.
+
+27.Enforce authentication and rate limiting for all public APIs.
+
+28.Validate all request bodies and parameters against defined schemas.
+
+29.Ensure all endpoints use HTTPS only; no unsecured endpoints allowed.
+
+30.Apply security headers such as Content-Security-Policy, X-Frame-Options, and Strict-Transport-Security.
+
+31.Prevent clickjacking and MIME-type sniffing attacks.
+
+32.Disable debug mode and stack trace exposure in production.
+
+33.Do not expose environment variables or system configurations in logs or UI.
+
+34.Restrict access to sensitive configuration and deployment files.
+

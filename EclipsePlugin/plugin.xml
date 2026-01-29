@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<plugin>
+
+    <!-- 🌟 Auto-start plugin -->
+    <extension point="org.eclipse.ui.startup">
+        <startup class="com.ai.codereview.plugin.StartupTrigger"/>
+    </extension>
+
+    <!-- 🧩 Commands -->
+    <extension point="org.eclipse.ui.commands">
+        <command
+            id="com.ai.codereview.plugin.runReview"
+            name="Run Code Review"/>
+        <command
+            id="com.ai.codereview.plugin.openReviewPanel"
+            name="Open AI Review Panel"/>
+    </extension>
+
+    <!-- 🧠 Handlers (Corrected) -->
+    <extension point="org.eclipse.ui.handlers">
+        <!-- Only valid handler -->
+        <handler
+            commandId="com.ai.codereview.plugin.openReviewPanel"
+            class="com.ai.codereview.plugin.OpenPanelHandler"/>
+    </extension>
+
+    <!-- 🧰 Help menu (optional) -->
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:help?after=additions">
+            <command
+                commandId="com.ai.codereview.plugin.runReview"
+                label="Run AI Code Review"
+                style="push"/>
+        </menuContribution>
+    </extension>
+
+    <!-- ⭐ AI Tools menu -->
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=window">
+            <menu
+                id="com.ai.codereview.plugin.menu"
+                label="AI Tools">
+                <command
+                    commandId="com.ai.codereview.plugin.openReviewPanel"
+                    label="Open AI Review Panel"
+                    style="push"/>
+                <command
+                    commandId="com.ai.codereview.plugin.runReview"
+                    label="Run Code Review"
+                    style="push"/>
+            </menu>
+        </menuContribution>
+    </extension>
+
+    <!-- 📦 View category -->
+    <extension point="org.eclipse.ui.views">
+        <category
+            id="com.ai.codereview.plugin.category"
+            name="AI Tools"/>
+    </extension>
+
+    <!-- 🪟 Custom AI Panel -->
+    <extension point="org.eclipse.ui.views">
+        <view
+            id="com.ai.codereview.plugin.aiReviewPanel"
+            name="AI Review Panel"
+            class="com.ai.codereview.plugin.AIReviewPanel"
+            category="com.ai.codereview.plugin.category"/>
+    </extension>
+
+    <!-- 📌 Auto-place panel -->
+    <extension point="org.eclipse.ui.perspectiveExtensions">
+        <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+            <view
+                id="com.ai.codereview.plugin.aiReviewPanel"
+                relationship="stack"
+                relative="org.eclipse.ui.console.ConsoleView"
+                visible="true"/>
+        </perspectiveExtension>
+    </extension>
+
+</plugin>

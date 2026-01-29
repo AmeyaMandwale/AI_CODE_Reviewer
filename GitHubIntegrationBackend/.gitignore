@@ -1,0 +1,62 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build
+bin/
+obj/
+
+# Others
+*.log
+*.tmp
+*.swp
+
+
+*.csproj.user
+
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.csproj.user
+
+# Build artifacts
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# Entity Framework Migrations
+[Mm]igrations/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.cache
+*.pdb
+*.db
+
+.env
+.sonarqube
+sonarqube/
+
+
+uploads/
+workflow-logs/
+ci-logs/
+artifacts/
+reports/
+temp/
+
+# JMeter outputs
+*.jtl
+jmeter-report/
